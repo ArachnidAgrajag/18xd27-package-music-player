@@ -17,11 +17,11 @@ It won't work without it.
 This project uses cmake. You can either download and add the project to your favourite IDE/Editor 
 or follow the following steps if you are running a linux distro.
 
-"""
+```
 git clone https://github.com/ArachnidAgrajag/18xd27-package-music-player.git
 cd 18xd27-package-music-player
 mkdir build && cd build
 cmake ..
 make 
 ./MyMusicPlayer
-"""
+```
