@@ -5,10 +5,11 @@ Work in progress.
 Simple command line music player in c++ using SDL.
 This is a part of the Data Structures Lab (18XD27) in M.Sc. Data Science Course under AMCS, PSG Tech.
 
-## Prerequsites
+## Prerequisites
 GCC compiler, CMake, SDL2
 
 Please install CMake from https://cmake.org/download/
+
 Please install SDL2 from https://www.libsdl.org/download-2.0.php
 
 It won't work without it.
