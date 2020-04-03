@@ -6,21 +6,19 @@
 #include <QDebug>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class Dialog; }
+namespace Ui { class PlayerDialog; }
 QT_END_NAMESPACE
 
-class Dialog : public QDialog
+class PlayerDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    Dialog(QWidget *parent = nullptr);
-    ~Dialog();
+    PlayerDialog(QWidget *parent = nullptr);
+    ~PlayerDialog();
 
 private slots:
     void on_sliderProgress_sliderMoved(int position);
-
-    void on_sliderVolume_sliderMoved(int position);
 
     void on_startButton_clicked();
 
@@ -31,7 +29,9 @@ private slots:
     void on_stopButton_clicked();
 
 private:
-    Ui::Dialog *ui;
+    Ui::PlayerDialog *ui;
     QMediaPlayer * player;
 };
+
+QString msToTime(qint64 msTime);
 #endif // DIALOG_H
