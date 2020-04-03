@@ -2,27 +2,22 @@
 Work in progress. 
 
 ## About
-Simple command line music player in c++ using SDL.
+Simple ~~command line~~ GUI music player in c++ using ~~SDL~~ Qt creator for the implementation of stacks and queues. This project uses Qt under LGPL opensource license (refer: https://www.gnu.org/licenses/lgpl-3.0.en.html).
+
 This is a part of the Data Structures Lab (18XD27) in M.Sc. Data Science Course under AMCS, PSG Tech.
 
-## Prerequisites
-GCC compiler, CMake, SDL2
+## Prerequisites to work on this
+Qt opensource
 
-Please install CMake from https://cmake.org/download/
+https://www.qt.io/download-open-source
 
-Please install SDL2 from https://www.libsdl.org/download-2.0.php
+You can either install Qt from the online tool or manually
 
-It won't work without it.
+Online Installer : https://www.qt.io/download-qt-installdr
 
-## How to build and run
-This project uses cmake. You can either download and add the project to your favourite IDE/Editor 
-or follow the following steps if you are running a linux distro.
+Offline Installers : https://www.qt.io/offline-installers
 
-```
-git clone https://github.com/ArachnidAgrajag/18xd27-package-music-player.git
-cd 18xd27-package-music-player
-mkdir build && cd build
-cmake ..
-make 
-./MyMusicPlayer
-```
+The install instructions are provided in the above links.
+
+##How Data structurs are used
+to be updated soon
