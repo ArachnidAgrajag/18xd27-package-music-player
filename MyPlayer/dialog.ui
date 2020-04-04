@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1091</width>
-    <height>583</height>
+    <width>1174</width>
+    <height>555</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,43 +16,7 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>40</y>
-     <width>201</width>
-     <height>391</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item alignment="Qt::AlignHCenter">
-     <widget class="QLabel" name="allSongsLabel">
-      <property name="text">
-       <string>All Songs</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QListWidget" name="allSongsList"/>
-    </item>
-    <item>
-     <widget class="QPushButton" name="addToQueueButton">
-      <property name="text">
-       <string>Add to Queue</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="newQueueButton">
-      <property name="text">
-       <string>New Queue</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
+     <x>280</x>
      <y>30</y>
      <width>431</width>
      <height>421</height>
@@ -60,6 +24,13 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_3">
     <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+     <widget class="QLabel" name="nowPlayinglabel">
+      <property name="text">
+       <string>Now Playing</string>
+      </property>
+     </widget>
+    </item>
+    <item alignment="Qt::AlignHCenter">
      <widget class="QLabel" name="coverImg">
       <property name="text">
        <string/>
@@ -92,7 +63,7 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>360</x>
      <y>500</y>
      <width>340</width>
      <height>32</height>
@@ -138,9 +109,9 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>120</x>
      <y>470</y>
-     <width>1021</width>
+     <width>881</width>
      <height>23</height>
     </rect>
    </property>
@@ -171,19 +142,19 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>50</y>
-     <width>391</width>
-     <height>401</height>
+     <x>730</x>
+     <y>30</y>
+     <width>431</width>
+     <height>421</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_5">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_4">
-        <item>
-         <widget class="QLabel" name="playinNowlabel">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QLabel" name="upNextlabel">
           <property name="text">
            <string>Up Next</string>
           </property>
@@ -195,8 +166,8 @@
        </layout>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="label">
           <property name="text">
            <string>Just Played</string>
@@ -211,11 +182,87 @@
      </layout>
     </item>
     <item>
-     <widget class="QPushButton" name="clearQueueButton">
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QPushButton" name="resetButton">
+        <property name="text">
+         <string>Reset</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="shuffleButton">
+        <property name="text">
+         <string>Shuffle</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="repeatCheckBox">
+        <property name="text">
+         <string>Repeat</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="clearQueueButton">
+        <property name="text">
+         <string>Clear</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>31</y>
+     <width>251</width>
+     <height>421</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="allSongsLabel">
       <property name="text">
-       <string>Clear Queue</string>
+       <string>All Songs</string>
       </property>
      </widget>
+    </item>
+    <item>
+     <widget class="QListWidget" name="allSongsList">
+      <property name="selectionMode">
+       <enum>QAbstractItemView::MultiSelection</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="clearSelButton">
+      <property name="text">
+       <string>Clear Selection</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QPushButton" name="newQueueButton">
+        <property name="text">
+         <string>New Queue</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="addToQueueButton">
+        <property name="text">
+         <string>Add to Queue</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>

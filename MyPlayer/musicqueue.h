@@ -3,12 +3,6 @@
 #include"musicfile.h"
 #include <iostream>
 
-class musicQueue
-{
-
-public:
-    musicQueue();
-};
 
 class musicQueueSpecial{
     int end;
@@ -17,6 +11,8 @@ class musicQueueSpecial{
 public:
     musicQueueSpecial(int c = 100);
     ~musicQueueSpecial();
+    musicQueueSpecial(const musicQueueSpecial & mQueue);
+    musicQueueSpecial& operator = (const musicQueueSpecial);
     void enqueue(const char * FileLoc);
     void dequeue();
     void push(const char * FileLoc);
@@ -29,6 +25,8 @@ public:
     void display();
     int count();
     musicFile get_mFile(int index);
+    void reset(musicQueueSpecial * previous, musicFile* curFile);
+    void shuffle(musicQueueSpecial *previous, musicFile *curFile);
 };
 
 #endif // MUSICQUEUE_H

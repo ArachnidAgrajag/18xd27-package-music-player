@@ -1,10 +1,5 @@
 #include "musicqueue.h"
 
-
-musicQueue::musicQueue()
-{
-
-}
 musicQueueSpecial::musicQueueSpecial(int c){
     capacity=c;
     end = 0;
@@ -13,6 +8,30 @@ musicQueueSpecial::musicQueueSpecial(int c){
 
 musicQueueSpecial::~musicQueueSpecial(){
     delete [] queue;
+}
+
+musicQueueSpecial::musicQueueSpecial(const musicQueueSpecial &mQueue)
+{
+    this->end=mQueue.end;
+    this->capacity=mQueue.capacity;
+    queue = new musicFile [capacity];
+    for(int i=0;i<end;i++){
+        this->queue[i]=mQueue.queue[i];
+    }
+
+}
+
+musicQueueSpecial &musicQueueSpecial::operator =(const musicQueueSpecial mQueue)
+{
+    if(this!=&mQueue){
+        this->end=mQueue.end;
+        this->capacity=mQueue.capacity;
+        for(int i=0;i<=end;i++){
+            this->queue[i]=mQueue.queue[i];
+        }
+    }
+
+    return *this;
 }
 
 void musicQueueSpecial::enqueue(const char *FileLoc){
@@ -98,4 +117,24 @@ int musicQueueSpecial::count()
 musicFile musicQueueSpecial::get_mFile(int index)
 {
     return queue[index];
+}
+
+void musicQueueSpecial::reset(musicQueueSpecial *previous, musicFile *curFile)
+{
+    jumpBack(previous->count()-2,previous,curFile);
+}
+
+void musicQueueSpecial::shuffle(musicQueueSpecial *previous, musicFile *curFile)
+{
+    reset(previous,curFile);
+    push(curFile->get_fileLoc());
+    musicFile temp;
+    int randomIndex = 0;
+    for(int i=0;i<end;i++){
+        randomIndex=rand()%(end);
+        temp = queue[i];
+        queue[i]=queue[randomIndex];
+        queue[randomIndex]=temp;
+    }
+    *curFile=pop();
 }
