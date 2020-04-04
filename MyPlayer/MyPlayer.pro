@@ -49,4 +49,4 @@ else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/include/tag
 else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/include/taglib/lib/release/tag.lib
 else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/include/taglib/lib/debug/tag.lib
 else:unix: PRE_TARGETDEPS += $$PWD/include/taglib/lib/libtag.a
-LIBS += -lz
+LIBS += -lz -lstdc++fs

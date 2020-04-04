@@ -16,7 +16,9 @@ PlayerDialog::PlayerDialog(QWidget *parent)
     connect(ui->curSongsList,&QListWidget::itemDoubleClicked,this, &PlayerDialog::on_curSongItemDoubleClicked);
     connect(ui->playedSongList,&QListWidget::itemDoubleClicked,this, &PlayerDialog::on_prevSongItemDoubleClicked);
     repeat=false;
-    //curQueue = new musicQueueSpecial;
+
+    ui->addToQueueButton->setDisabled(true);
+    ui->newQueueButton->setDisabled(true);
 }
 
 
@@ -43,6 +45,20 @@ void PlayerDialog::load_allSongs(musicQueueSpecial mQueue)
     load_playingQueue(allSongs);
 }
 
+QString PlayerDialog::getDirectory()
+{
+    return QInputDialog::getText(this,"Music Folder","Enter the location of the music folder: ");
+}
+
+void PlayerDialog::showMessage(QString msg ,bool quit)
+{
+    QMessageBox::about(this,"Information",msg);
+    if(quit){
+        close();
+    }
+
+}
+
 
 void PlayerDialog::load_music(musicFile mFile, bool firstPlay){
     player->setMedia(QUrl::fromLocalFile(mFile.get_fileLoc()));
@@ -59,7 +75,8 @@ void PlayerDialog::load_music(musicFile mFile, bool firstPlay){
         ui->startButton->setChecked(false);
         player->play();
     }
-    if(previous.count()==1){
+
+    if(previous.count()==0){
         if(!repeat)
             ui->previousButton->setDisabled(true);
     }
@@ -78,8 +95,12 @@ void PlayerDialog::load_music(musicFile mFile, bool firstPlay){
     if(!(curQueue.count()==0&&previous.count()==0)){
         ui->resetButton->setDisabled(false);
         ui->shuffleButton->setDisabled(false);
-        ui->repeatCheckBox->setDisabled(false);
     }
+
+    if(firstPlay){
+        previous.dequeue();
+    }
+
     displayCurQueue();
 
 }
@@ -141,7 +162,7 @@ QString msToTime(qint64 msTime){
 
 void PlayerDialog::on_previousButton_clicked()
 {
-    if(previous.count()==1 && repeat){
+    if(previous.count()==0 && repeat){
         int n = curQueue.count();
         for(int i= 0;i<n;i++){
             curQueue.playNext(&previous,&playingNow);
@@ -200,11 +221,12 @@ void PlayerDialog::on_clearQueueButton_clicked()
         previous.dequeue();
     }
     displayCurQueue();
+
     ui->nextButton->setDisabled(true);
     ui->previousButton->setDisabled(true);
     ui->resetButton->setDisabled(true);
     ui->shuffleButton->setDisabled(true);
-    ui->repeatCheckBox->setDisabled(true);
+
 }
 
 void PlayerDialog::on_curSongItemDoubleClicked(QListWidgetItem *item)
@@ -260,7 +282,7 @@ void PlayerDialog::on_repeatCheckBox_stateChanged(int arg1)
        repeat=false;
        if(curQueue.count()==0)
            ui->nextButton->setDisabled(true);
-       if(previous.count()==1)
+       if(previous.count()==0)
            ui->previousButton->setDisabled(true);
    }
    else if (arg1==2){//checked state
@@ -293,6 +315,8 @@ void PlayerDialog::on_addToQueueButton_clicked()
         curQueue.enqueue(allSongs.get_mFile((item->data(Qt::UserRole).toInt())).get_fileLoc());
     }
     displayCurQueue();
+    ui->allSongsList->clearSelection();
+    ui->nextButton->setEnabled(true);
 }
 
 void PlayerDialog::on_newQueueButton_clicked()
@@ -304,5 +328,25 @@ void PlayerDialog::on_newQueueButton_clicked()
     foreach (QListWidgetItem* item, ui->allSongsList->selectedItems()){
         curQueue.enqueue(allSongs.get_mFile((item->data(Qt::UserRole).toInt())).get_fileLoc());
     }
+    curQueue.playNext(&previous,&playingNow);
+    n=previous.count();
+    for(int i=0;i<n;i++){
+        previous.dequeue();
+    }
+    load_music(playingNow);
     displayCurQueue();
+    ui->allSongsList->clearSelection();
+
+}
+
+void PlayerDialog::on_allSongsList_itemSelectionChanged()
+{
+    if(ui->allSongsList->selectedItems().count()==0){
+        ui->addToQueueButton->setDisabled(true);
+        ui->newQueueButton->setDisabled(true);
+    }
+    else{
+        ui->addToQueueButton->setDisabled(false);
+        ui->newQueueButton->setDisabled(false);
+    }
 }

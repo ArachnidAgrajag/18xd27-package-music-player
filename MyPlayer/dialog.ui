@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1174</width>
-    <height>555</height>
+    <width>1390</width>
+    <height>751</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,135 +16,60 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>30</y>
-     <width>431</width>
-     <height>421</height>
+     <x>20</x>
+     <y>100</y>
+     <width>321</width>
+     <height>431</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_3">
-    <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-     <widget class="QLabel" name="nowPlayinglabel">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item alignment="Qt::AlignHCenter">
+     <widget class="QLabel" name="allSongsLabel">
       <property name="text">
-       <string>Now Playing</string>
+       <string>All Songs</string>
       </property>
      </widget>
     </item>
-    <item alignment="Qt::AlignHCenter">
-     <widget class="QLabel" name="coverImg">
-      <property name="text">
-       <string/>
+    <item>
+     <widget class="QListWidget" name="allSongsList">
+      <property name="selectionMode">
+       <enum>QAbstractItemView::MultiSelection</enum>
       </property>
      </widget>
     </item>
-    <item alignment="Qt::AlignHCenter">
-     <widget class="QLabel" name="Album">
+    <item>
+     <widget class="QPushButton" name="clearSelButton">
       <property name="text">
-       <string>Album</string>
+       <string>Clear Selection</string>
       </property>
      </widget>
     </item>
-    <item alignment="Qt::AlignHCenter">
-     <widget class="QLabel" name="Title">
-      <property name="text">
-       <string>Title</string>
-      </property>
-     </widget>
-    </item>
-    <item alignment="Qt::AlignHCenter">
-     <widget class="QLabel" name="Artist">
-      <property name="text">
-       <string>Artist</string>
-      </property>
-     </widget>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QPushButton" name="newQueueButton">
+        <property name="text">
+         <string>New Queue</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="addToQueueButton">
+        <property name="text">
+         <string>Add to Queue</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>360</x>
-     <y>500</y>
-     <width>340</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <item>
-     <widget class="QPushButton" name="previousButton">
-      <property name="text">
-       <string>Previous</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="startButton">
-      <property name="text">
-       <string>Play</string>
-      </property>
-      <property name="checkable">
-       <bool>true</bool>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="stopButton">
-      <property name="text">
-       <string>Stop</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="nextButton">
-      <property name="text">
-       <string>Next</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>470</y>
-     <width>881</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QLabel" name="elapsedTime">
-      <property name="text">
-       <string>et</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="sliderProgress">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="totalTime">
-      <property name="text">
-       <string>tt</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>730</x>
-     <y>30</y>
-     <width>431</width>
+     <x>850</x>
+     <y>100</y>
+     <width>481</width>
      <height>421</height>
     </rect>
    </property>
@@ -218,47 +143,135 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>31</y>
-     <width>251</width>
-     <height>421</height>
+     <x>160</x>
+     <y>600</y>
+     <width>881</width>
+     <height>23</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QLabel" name="allSongsLabel">
+     <widget class="QLabel" name="elapsedTime">
       <property name="text">
-       <string>All Songs</string>
+       <string>et</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QListWidget" name="allSongsList">
-      <property name="selectionMode">
-       <enum>QAbstractItemView::MultiSelection</enum>
+     <widget class="QSlider" name="sliderProgress">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="clearSelButton">
+     <widget class="QLabel" name="totalTime">
       <property name="text">
-       <string>Clear Selection</string>
+       <string>tt</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>630</y>
+     <width>340</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QPushButton" name="previousButton">
+      <property name="text">
+       <string>Previous</string>
       </property>
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <widget class="QPushButton" name="startButton">
+      <property name="text">
+       <string>Play</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="stopButton">
+      <property name="text">
+       <string>Stop</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="nextButton">
+      <property name="text">
+       <string>Next</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>365</x>
+     <y>41</y>
+     <width>471</width>
+     <height>541</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_6">
+    <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+     <widget class="QLabel" name="nowPlayinglabel">
+      <property name="text">
+       <string>Now Playing</string>
+      </property>
+     </widget>
+    </item>
+    <item alignment="Qt::AlignHCenter">
+     <widget class="QLabel" name="coverImg">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
-       <widget class="QPushButton" name="newQueueButton">
+       <widget class="QLabel" name="Album">
         <property name="text">
-         <string>New Queue</string>
+         <string>Album</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="addToQueueButton">
+       <widget class="QLabel" name="Title">
         <property name="text">
-         <string>Add to Queue</string>
+         <string>Title</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="Artist">
+        <property name="text">
+         <string>Artist</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
         </property>
        </widget>
       </item>

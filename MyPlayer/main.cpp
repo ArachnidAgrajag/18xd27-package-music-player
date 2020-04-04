@@ -2,19 +2,52 @@
 #include "musicfile.h"
 #include <QApplication>
 #include "musicqueue.h"
+#include<cstring>
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <experimental/filesystem>
+namespace fs = std::experimental::filesystem;
+struct stat info;
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     PlayerDialog w;
+    std::string direc;
     musicQueueSpecial allSongs;
-    allSongs.enqueue("/home/saikrishna/Downloads/random stuff/Chumma Kizhi-Masstamilan.in.mp3");
-    allSongs.enqueue("/home/saikrishna/Downloads/random stuff/VIP_(Title_Song)-StarMusiQ.Com.mp3");
-    allSongs.enqueue("/home/saikrishna/Downloads/random stuff/Yaanji-MassTamilan.com.mp3");
-    allSongs.enqueue("/home/saikrishna/Downloads/random stuff/Aalaporan_Thamizhan-5StarMusiQ.Com.mp3");
-    allSongs.enqueue("/home/saikrishna/Downloads/random stuff/Adiye-Sakkarakatti-MassTamilan.com.mp3");
-    allSongs.enqueue("/home/saikrishna/Downloads/random stuff/Azhaipaiya_Azhaipaya-VmusiQ.Com.mp3");
-    w.show();
-    w.load_allSongs(allSongs);
+    bool dirExists = false;
+
+    while(!dirExists){
+        w.show();
+        direc=w.getDirectory().toStdString();
+        if(direc.length()!=0){
+            if( stat( direc.c_str(), &info ) != 0 ){
+                if(errno==ENOENT)
+                    w.showMessage(QString::fromStdString("ERROR:The specified directory does not exists or cannot Access "+direc),true);
+                if(errno==ENOTDIR)
+                    w.showMessage(QString::fromStdString("ERROR: "+direc+" is not a directory"),true);
+            }
+            else
+                dirExists=true;
+        }
+        else
+            dirExists=true;
+    }
+
+
+    if(direc.length()!=0){
+        for (const auto & entry : fs::recursive_directory_iterator(direc)){
+            if(entry.path().extension()==".mp3"){
+                allSongs.enqueue(entry.path().c_str());
+            }
+        }
+        w.load_allSongs(allSongs);
+    }
+
+    else {
+        w.close();
+    }
+
     return a.exec();
 }

@@ -121,7 +121,7 @@ musicFile musicQueueSpecial::get_mFile(int index)
 
 void musicQueueSpecial::reset(musicQueueSpecial *previous, musicFile *curFile)
 {
-    jumpBack(previous->count()-2,previous,curFile);
+    jumpBack(previous->count()-1,previous,curFile);
 }
 
 void musicQueueSpecial::shuffle(musicQueueSpecial *previous, musicFile *curFile)
