@@ -17,12 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    playerdialog.cpp \
-    songTags.cpp
+    musicfile.cpp \
+    playerdialog.cpp
 
 HEADERS += \
-    playerdialog.h \
-    songTags.h
+    musicfile.h \
+    playerdialog.h
 
 FORMS += \
     dialog.ui
@@ -31,15 +31,20 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/include/id3/lib/release/ -lid3
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/include/id3/lib/debug/ -lid3
-else:unix: LIBS += -L$$PWD/include/id3/lib/ -lid3
 
-INCLUDEPATH += $$PWD/include/id3/include
-DEPENDPATH += $$PWD/include/id3/include
+#taglib stuff
 
-win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/include/id3/lib/release/libid3.a
-else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/include/id3/lib/debug/libid3.a
-else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/include/id3/lib/release/id3.lib
-else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/include/id3/lib/debug/id3.lib
-else:unix: PRE_TARGETDEPS += $$PWD/include/id3/lib/libid3.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/include/taglib/lib/release/ -ltag
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/include/taglib/lib/debug/ -ltag
+else:unix: LIBS += -L$$PWD/include/taglib/lib/ -ltag
+
+INCLUDEPATH += $$PWD/include/taglib/include
+DEPENDPATH += $$PWD/include/taglib/include
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/include/taglib/lib/release/libtag.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/include/taglib/lib/debug/libtag.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/include/taglib/lib/release/tag.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/include/taglib/lib/debug/tag.lib
+else:unix: PRE_TARGETDEPS += $$PWD/include/taglib/lib/libtag.a
+LIBS += -lz

@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QMediaPlayer>
 #include <QDebug>
+#include "musicfile.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class PlayerDialog; }
@@ -16,6 +17,7 @@ class PlayerDialog : public QDialog
 public:
     PlayerDialog(QWidget *parent = nullptr);
     ~PlayerDialog();
+    void load_music(musicFile * mFile);
 
 private slots:
     void on_sliderProgress_sliderMoved(int position);
@@ -27,6 +29,7 @@ private slots:
     void on_durationChanged(qint64 position);
 
     void on_stopButton_clicked();
+
 
 private:
     Ui::PlayerDialog *ui;

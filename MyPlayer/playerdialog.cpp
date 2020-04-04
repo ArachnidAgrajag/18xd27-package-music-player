@@ -1,7 +1,7 @@
 #include "playerdialog.h"
 #include "ui_dialog.h"
-#include "songTags.h"
-const char file [] ="/home/saikrishna/Downloads/random stuff/Chumma Kizhi-Masstamilan.in.mp3";
+
+
 
 PlayerDialog::PlayerDialog(QWidget *parent)
     : QDialog(parent)
@@ -10,19 +10,28 @@ PlayerDialog::PlayerDialog(QWidget *parent)
  ui->setupUi(this);
 
     player = new QMediaPlayer(this);
-
     connect(player, &QMediaPlayer::positionChanged, this, &PlayerDialog::on_positionChanged);
     connect(player, &QMediaPlayer::durationChanged, this, &PlayerDialog::on_durationChanged);
-    player->setMedia(QUrl::fromLocalFile(file));
-    readTags(file);
-
 }
+
 
 PlayerDialog::~PlayerDialog()
 {
     delete ui;
 }
 
+
+void PlayerDialog::load_music(musicFile *mFile){
+    player->setMedia(QUrl::fromLocalFile(mFile->get_fileLoc()));
+    ui->Album->setText("Album : "+mFile->get_album());
+    ui->Album->adjustSize();
+    ui->Title->setText("Track : "+mFile->get_title());
+    ui->Title->adjustSize();
+    ui->Artist->setText("Artist : "+mFile->get_artist());
+    ui->Artist->adjustSize();
+    ui->coverImg->setPixmap(QPixmap::fromImage( mFile->get_coverArt()));
+    ui->coverImg->adjustSize();
+}
 
 void PlayerDialog::on_sliderProgress_sliderMoved(int position)
 {
@@ -31,9 +40,6 @@ void PlayerDialog::on_sliderProgress_sliderMoved(int position)
 
 void PlayerDialog::on_startButton_clicked()
 {
-    //Load the file
-    //player->setMedia(QUrl::fromLocalFile("/home/saikrishna/Downloads/random stuff/Chumma Kizhi-Masstamilan.in.mp3"));
-
     if (ui->startButton->isChecked()){
         ui->startButton->setText("Play");
         player->pause();
@@ -51,7 +57,6 @@ void PlayerDialog::on_startButton_clicked()
 void PlayerDialog::on_positionChanged(qint64 position)
 {
     ui->sliderProgress->setValue(position);
-    std::cout<<"position"<<position<<std::endl;
     ui->elapsedTime->setText(msToTime(position));
 
 }
