@@ -18,10 +18,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     musicfile.cpp \
+    musiclist.cpp \
+    musicqueue.cpp \
     playerdialog.cpp
 
 HEADERS += \
     musicfile.h \
+    musiclist.h \
+    musicqueue.h \
     playerdialog.h
 
 FORMS += \

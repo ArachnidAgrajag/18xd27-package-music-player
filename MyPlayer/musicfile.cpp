@@ -1,12 +1,45 @@
 #include "musicfile.h"
 
-musicFile::musicFile(const char * fileLoc)
-{
+musicFile::musicFile(const char * fileLoc){
+    this->fileLoc = new char[strlen(fileLoc)];
     strcpy(this->fileLoc,fileLoc);
     if(strlen(this->fileLoc)!=0){
         readTags();
     }
 }
+
+void musicFile::set_fileLoc(const char *fileLoc){
+    this->fileLoc = new char[strlen(fileLoc)];
+    strcpy(this->fileLoc,fileLoc);
+    if(strlen(this->fileLoc)!=0){
+        readTags();
+    }
+}
+
+musicFile::~musicFile(){
+    delete fileLoc;
+}
+musicFile::musicFile(const musicFile & mFile){
+    this->fileLoc = new char[strlen(mFile.fileLoc)];
+    strcpy(fileLoc,mFile.fileLoc);
+     title=mFile.title;
+     album=mFile.album;
+     artist=mFile.artist;
+     coverArt=mFile.coverArt;
+}
+
+musicFile& musicFile::operator = (const musicFile &mFile){
+    if(this != &mFile){
+        this->fileLoc = new char[strlen(mFile.fileLoc)];
+        strcpy(fileLoc,mFile.fileLoc);
+        title=mFile.title;
+        album=mFile.album;
+        artist=mFile.artist;
+        coverArt=mFile.coverArt;
+    }
+    return *this;
+}
+
 QImage musicFile::imageForTag(TagLib::ID3v2::Tag *tag)
 {
     TagLib::ID3v2::FrameList l = tag->frameList("APIC");
