@@ -19,5 +19,5 @@ Offline Installers : https://www.qt.io/offline-installers
 
 The install instructions are provided in the above links.
 
-##How Data structurs are used
+## How Data structurs are used
 to be updated soon
