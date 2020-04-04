@@ -1,0 +1,12 @@
+prefix=/home/saikrishna/Downloads/taglib-master/build
+exec_prefix=/home/saikrishna/Downloads/taglib-master/build
+libdir=/home/saikrishna/Downloads/taglib-master/build/lib
+includedir=/home/saikrishna/Downloads/taglib-master/build/include
+
+
+Name: TagLib C Bindings
+Description: Audio meta-data library (C bindings)
+Requires: taglib
+Version: 1.11.1
+Libs: -L/home/saikrishna/Downloads/taglib-master/build/lib -ltag_c
+Cflags: -I/home/saikrishna/Downloads/taglib-master/build/include/taglib 

@@ -32,4 +32,6 @@
 *.app
 #build directory
 build/
+#config files
 .vscode/settings.json
+*.user
