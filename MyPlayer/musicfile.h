@@ -19,8 +19,11 @@ private:
     QImage imageForTag(TagLib::ID3v2::Tag *tag);
 public:
     musicFile(const char * fileLoc = "");
+    ~musicFile();
+    musicFile(const musicFile & mFile);
+    musicFile& operator = (const musicFile &mFile);
     void readTags();
-    void load_music();
+    void set_fileLoc(const char * fileLoc);
     char * get_fileLoc(){
         return fileLoc;
     }
@@ -37,7 +40,7 @@ public:
         return coverArt;
     }
 private:
-    char fileLoc [];
+    char * fileLoc;
  };
 
 #endif // MUSICFILE_H
