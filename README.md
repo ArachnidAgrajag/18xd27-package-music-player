@@ -1,5 +1,5 @@
 # 18xd27-package-music-player
-Work in progress. 
+Works. Some musics files with corrupted/ missing tags throw an error. There are no other known issues 
 
 ## About
 Simple ~~command line~~ GUI music player in c++ using ~~SDL~~ Qt creator for the implementation of stacks and queues. This project uses Qt under LGPL opensource license (refer: https://www.gnu.org/licenses/lgpl-3.0.en.html).
@@ -19,5 +19,5 @@ Offline Installers : https://www.qt.io/offline-installers
 
 The install instructions are provided in the above links.
 
-##How Data structurs are used
+## How Data structurs are used
 to be updated soon
