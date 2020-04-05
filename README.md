@@ -5,6 +5,7 @@ Works. Some musics files with corrupted/ missing tags throw an error. There are 
 Simple ~~command line~~ GUI music player in c++ using ~~SDL~~ Qt creator for the implementation of stacks and queues. This project uses Qt under LGPL opensource license (refer: https://www.gnu.org/licenses/lgpl-3.0.en.html).
 
 This is a part of the Data Structures Lab (18XD27) in M.Sc. Data Science Course under AMCS, PSG Tech.
+Created by SaiKrishna (19pd29) and jegadish (19pd15)
 
 ## Prerequisites to work on this
 Qt opensource
