@@ -35,3 +35,5 @@ build/
 #config files
 .vscode/settings.json
 *.user
+!libtag.a
+!libtag_c.a
